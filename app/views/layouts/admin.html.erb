@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>Administer the Bookstore</title>
+	<%= stylesheet_link_tag "scaffold", "depot", :media => "all" %>
+</head>
+<body id="admin">
+	<div id="banner">
+		<img src="/images/logo.png"/>
+		<%= @page_title || "Pragmatic Bookshelf" %>
+	</div>
+	<div id="columns">
+		<div id="side">
+			<p>
+				<%= link_to "Products", :controller => 'admin',
+										:action => 'list' %>
+			</p>
+			<p>
+				<%= link_to "List users", 	:controller => 'login',
+											:action => 'list_users' %>
+				<br/>
+				<%= link_to "Add user", 	:controller => 'login',
+											:action => 'add_user' %>
+			</p>
+			<p>
+				<%= link_to "Logout", 	:controller => 'login',
+										:action => 'logout' %>
+			</p>
+		</div>
+		<div id="main">
+			<% if flash[:notice] -%>
+			<div id="notice"><%= flash[:notice] %></div>
+			<% end -%>
+			<%= yield :layout %>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<div class="cart-title">Your cart</div>
+<table>
+	<%= render(:partial => "cart_item", :collection => cart.items) %>
+	<tr class="total-line">
+		<td colspan="2">Total</td>
+		<td class="total-cell"><%= number_to_currency(@cart.total_price) %></td>
+	</tr>
+</table>
+
+<%= button_to "Checkout", :action => :checkout %>
+
+<% form_remote_tag :url => {:action => :empty_cart} do %>
+	<%= submit_tag "Empty cart" %>
+<% end %>
